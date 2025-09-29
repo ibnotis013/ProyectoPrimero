@@ -13,6 +13,6 @@ public class principal {
         }else{
                 System.out.println("eres menor no puedes pasar ");
             }
-        
+
     }
 }
