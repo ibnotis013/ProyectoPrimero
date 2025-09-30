@@ -25,12 +25,15 @@ public class principal {
 
         if (edadCliente>=18&&nivelAlcohol<1.2) {
             System.out.println("puedes pasar");
-            System.out.println("te tomas unos cubatillas " +(dinero-precioCombinado)+"te queda esta guita");
+            System.out.println("te tomas unos cubatillas. " +(dinero=dinero-precioCombinado)+" te queda esta guita");
             if(dinero<=0){
                 System.out.println("no tienes dinero no bebes mas");
+            }else if (dinero>=8&&nivelAlcohol<1.2){
+                System.out.println("te tomas otra ");
+            }else if (dinero<=7&&nivelAlcohol<1.2){
+                System.out.println("no tienes nada de guita, vete a currar");
             }
-            System.out.println("te tomas otra ?");
-            
+
         }
         else if (edadCliente<18) {
             System.out.println("No puedes pasar, eres menor de edad");
