@@ -7,15 +7,15 @@ public class principal {
         System.out.println("Vamos a tomar el aire bienvenido");
         double  nivelAlcohol= 0.0;
         double  precioChupito= 3;
-        double  precioCaña= 1.8;
+        double  precioCanha= 1.8;
         double  precioCombinado= 8;
         double nivelChupito= 0.25;
-        double  nivelCaña= 0.1;
-        double  nivelCombinado= 0.4;
+        double  nivelCanha= 0.1;
+        double  nivelCombinado= 0.45;
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce el nombre del cliente");
         String nombreCliente=sc.nextLine();
-        System.out.printf("introduce la edad del cliente");
+        System.out.println("introduce la edad del cliente");
         int edadCliente=sc.nextInt();
         System.out.println("introduce el dinero del cliente");
         double dinero=sc.nextDouble();
@@ -23,14 +23,32 @@ public class principal {
 
 
 
-        if (edadCliente>=18&&nivelAlcohol<1.2) {
+        if (edadCliente>=18&&nivelAlcohol<1.2 ) {
             System.out.println("puedes pasar");
-            System.out.println("te tomas unos cubatillas. " +(dinero=dinero-precioCombinado)+" te queda esta guita");
-            if(dinero<=0){
-                System.out.println("no tienes dinero no bebes mas");
-            }else if (dinero>=8&&nivelAlcohol<1.2){
-                System.out.println("te tomas otra ");
-            }else if (dinero<=7&&nivelAlcohol<1.2){
+            if(dinero>=precioCombinado) {
+                System.out.println("te tomas unos cubatillas. ");
+                nivelAlcohol+=nivelCombinado;
+                dinero-=precioCombinado;
+            }
+            if(dinero<precioCombinado){
+                System.out.println("no tienes dinero no bebes");
+            }else if (dinero>=precioCombinado&&nivelAlcohol<1.2){
+                System.out.println("te tomas otra");
+                nivelAlcohol+=nivelCombinado;
+                dinero-=precioCombinado;
+                if(dinero<=0){
+                    System.out.println("no tienes dinero no bebes mas");
+                }else if (dinero>=precioCombinado&&nivelAlcohol<1.2){
+                    System.out.println("te tomas otra ");
+                    nivelAlcohol+=nivelCombinado;
+                    dinero-=precioCombinado;
+                }else if (dinero<precioCombinado&&nivelAlcohol<1.2){
+                    System.out.println("no tienes nada de guita, vete a currar");
+                }
+                else if (nivelAlcohol>1.2){
+                    System.out.println("vas borracho, largate de aqui ");
+                }
+            }else if (dinero<precioCombinado&&nivelAlcohol<1.2){
                 System.out.println("no tienes nada de guita, vete a currar");
             }
 
@@ -40,8 +58,9 @@ public class principal {
         }
         else if (edadCliente>=18&&nivelAlcohol>1.2) {
             System.out.println("no puedes pasar, vas borracho");
+        } else if (dinero<=0) {
+            System.out.println("sin dinero no se bebe");
         }
-
 
 
     }
